@@ -2,6 +2,9 @@
 
 module Types
   class MutationType < Types::BaseObject
+
+    field :create_point, mutation: Mutations::CreatePoint
+
     # TODO: remove me
     field :test_field, String, null: false,
       description: "An example field added by the generator"

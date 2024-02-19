@@ -2,6 +2,31 @@
 
 module Types
   class QueryType < Types::BaseObject
+
+    field :points, [Types::PointType], null: true 
+
+    field :point, Types::PointType, null: false do
+      argument :id, ID, required: true
+    end
+
+    field :point_by_name, Types::PointType, null: true do
+      argument :name, String, required: true
+    end
+
+    def points
+      Point.all
+    end
+
+    def point(id:)
+      Point.find(id)
+    end
+
+    def point_by_name(name:)
+      Point.find_by(name: name)
+    end
+
+
+
     field :node, Types::NodeType, null: true, description: "Fetches an object given its ID." do
       argument :id, ID, required: true, description: "ID of the object."
     end
