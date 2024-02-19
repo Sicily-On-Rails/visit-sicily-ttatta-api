@@ -4,6 +4,9 @@ module Types
   class MutationType < Types::BaseObject
 
     field :create_point, mutation: Mutations::CreatePoint
+    field :create_event, mutation: Mutations::CreateEvent
+    field :create_location, mutation: Mutations::CreateLocation
+    field :create_store, mutation: Mutations::CreateStore
 
     # TODO: remove me
     field :test_field, String, null: false,

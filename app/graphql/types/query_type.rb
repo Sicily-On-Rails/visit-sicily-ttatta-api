@@ -27,6 +27,32 @@ module Types
 
 
 
+    field :category, CategoryType, null: false do 
+      argument :id, ID, required: true
+    end
+
+    def category(id: )
+      Category.find(id)
+    end
+
+
+
+    field :events, [Types::EventType], null: true
+
+    def events
+      Event.all
+    end
+
+
+    field :locations, [Types::LocationType], null: true
+
+    def locations
+      Location.all
+    end
+
+
+
+
     field :node, Types::NodeType, null: true, description: "Fetches an object given its ID." do
       argument :id, ID, required: true, description: "ID of the object."
     end
