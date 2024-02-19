@@ -9,8 +9,7 @@ class CreateLocations < ActiveRecord::Migration[7.1]
       t.string :zipcode
       t.float :latitude
       t.string :longitude
-      t.references :event, null: true, foreign_key: true
-
+    
       t.timestamps
     end
   end

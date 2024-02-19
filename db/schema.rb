@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_02_19_114607) do
+ActiveRecord::Schema[7.1].define(version: 2024_02_19_150948) do
   create_table "categories", force: :cascade do |t|
     t.string "name"
     t.datetime "created_at", null: false
@@ -24,6 +24,15 @@ ActiveRecord::Schema[7.1].define(version: 2024_02_19_114607) do
     t.datetime "updated_at", null: false
     t.index ["category_id"], name: "index_categorized_points_on_category_id"
     t.index ["point_id"], name: "index_categorized_points_on_point_id"
+  end
+
+  create_table "event_locations", force: :cascade do |t|
+    t.integer "event_id", null: false
+    t.integer "location_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["event_id"], name: "index_event_locations_on_event_id"
+    t.index ["location_id"], name: "index_event_locations_on_location_id"
   end
 
   create_table "events", force: :cascade do |t|
@@ -44,10 +53,8 @@ ActiveRecord::Schema[7.1].define(version: 2024_02_19_114607) do
     t.string "zipcode"
     t.float "latitude"
     t.string "longitude"
-    t.integer "event_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["event_id"], name: "index_locations_on_event_id"
   end
 
   create_table "points", force: :cascade do |t|
@@ -78,5 +85,6 @@ ActiveRecord::Schema[7.1].define(version: 2024_02_19_114607) do
 
   add_foreign_key "categorized_points", "categories"
   add_foreign_key "categorized_points", "points"
-  add_foreign_key "locations", "events"
+  add_foreign_key "event_locations", "events"
+  add_foreign_key "event_locations", "locations"
 end

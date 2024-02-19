@@ -11,8 +11,8 @@ module Types
     field :zipcode, String
     field :latitude, Float
     field :longitude, String
-    field :event_id, Integer, null: false
     field :created_at, GraphQL::Types::ISO8601DateTime, null: false
     field :updated_at, GraphQL::Types::ISO8601DateTime, null: false
+    field :events, [EventType], null: false
   end
 end
