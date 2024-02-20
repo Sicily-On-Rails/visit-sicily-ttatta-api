@@ -3,9 +3,22 @@
 module Types
   class MutationType < Types::BaseObject
 
-    field :create_point, mutation: Mutations::CreatePoint
-    field :create_event, mutation: Mutations::CreateEvent
-    field :create_location, mutation: Mutations::CreateLocation
+    field :add_point, mutation: Mutations::Points::Add
+    field :update_point, mutation: Mutations::Points::Update
+    field :delete_point, mutation: Mutations::Points::Delete
+
+    field :add_event, mutation: Mutations::Events::Add
+    field :update_event, mutation: Mutations::Events::Update
+    field :delete_event, mutation: Mutations::Events::Delete
+
+    field :add_location, mutation: Mutations::Locations::Add
+    field :update_location, mutation: Mutations::Locations::Update
+    field :delete_location, mutation: Mutations::Locations::Delete
+
+
+    field :add_review, mutation: Mutations::Reviews::Add
+
+
     field :create_store, mutation: Mutations::CreateStore
 
     # TODO: remove me

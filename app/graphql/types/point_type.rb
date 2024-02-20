@@ -16,6 +16,12 @@ module Types
 
     field :point_count, Integer
 
+    field :categories, [CategoryType]
+
+    #field :reviews, [ReviewType]
+    field :reviews, ReviewType.connection_type, null: false, default_page_size: 2
+
+
     def point_count
       Point.all.count
     end

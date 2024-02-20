@@ -1,0 +1,11 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  point: one
+  raiting: 1
+  comment: MyText
+
+two:
+  point: two
+  raiting: 1
+  comment: MyText
