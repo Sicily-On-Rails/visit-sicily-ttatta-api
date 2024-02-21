@@ -1,4 +1,5 @@
 # frozen_string_literal: true
+include(Rails.application.routes.url_helpers)
 
 module Types
   class PointType < Types::BaseObject
@@ -13,6 +14,8 @@ module Types
     field :longitude, String
     field :created_at, GraphQL::Types::ISO8601DateTime, null: false
     field :updated_at, GraphQL::Types::ISO8601DateTime, null: false
+    field :image_url, String, null: true
+
 
     field :point_count, Integer
 
@@ -24,6 +27,12 @@ module Types
 
     def point_count
       Point.all.count
+    end
+
+    def image_url
+      if object.image.present?
+        rails_blob_path(object.image, only_path: true)
+      end
     end
 
   end

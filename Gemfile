@@ -30,3 +30,4 @@ end
 
 
 gem "graphql", "~> 2.2"
+gem "apollo_upload_server"

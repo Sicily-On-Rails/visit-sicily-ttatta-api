@@ -9,6 +9,14 @@ module Types
     field :end_date, GraphQL::Types::ISO8601DateTime
     field :created_at, GraphQL::Types::ISO8601DateTime, null: false
     field :updated_at, GraphQL::Types::ISO8601DateTime, null: false
+    field :image_url, String, null: true
+
+
+    def image_url
+      if object.image.present?
+        rails_blob_path(object.image, only_path: true)
+      end
+    end
 
   end
 end
